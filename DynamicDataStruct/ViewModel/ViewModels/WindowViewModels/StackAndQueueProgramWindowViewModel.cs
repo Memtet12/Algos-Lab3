@@ -17,9 +17,6 @@ using System.Threading;
 using Tests;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using System.Text;
-using Database.Access;
-using Database;
-using static Database.DatabaseCore;
 using System.Linq;
 using WorkWithFiles;
 
@@ -73,12 +70,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
 
             stackAndQueueProgramWindow.ButtonStepForward.IsEnabled = false;
             stackAndQueueProgramWindow.ButtonStopProgramm.IsEnabled = false;
-            stackAndQueueProgramWindow.SaveToBdButton.IsEnabled = false;
-            stackAndQueueProgramWindow.SaveToFileButton.IsEnabled = false;
-
-            stackAndQueueProgramWindow.ReadFromBdButton.IsEnabled = true;
-            stackAndQueueProgramWindow.ReadFromFileButton.IsEnabled = true;
-            stackAndQueueProgramWindow.GenerateNewProgramButton.IsEnabled = true;
+           
 
             stackAndQueueProgramWindow.ButtonSetStackMode.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
             stackAndQueueProgramWindow.ButtonSetQueueMode.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
@@ -97,13 +89,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
 
             stackAndQueueProgramWindow.ButtonStepForward.IsEnabled = false;
             stackAndQueueProgramWindow.ButtonStopProgramm.IsEnabled = false;
-            stackAndQueueProgramWindow.SaveToBdButton.IsEnabled = false;
-            stackAndQueueProgramWindow.SaveToFileButton.IsEnabled = false;
-
-
-            stackAndQueueProgramWindow.ReadFromBdButton.IsEnabled = true;
-            stackAndQueueProgramWindow.ReadFromFileButton.IsEnabled = true;
-            stackAndQueueProgramWindow.GenerateNewProgramButton.IsEnabled = true;
+            
 
             stackAndQueueProgramWindow.ButtonSetQueueMode.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
             stackAndQueueProgramWindow.ButtonSetStackMode.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
@@ -123,7 +109,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
                     steps = MyStack<Tuple<int, string>>.ShowStackChanges(
                                         FileWorker.GetAllDatasetLines(fileDialog.FileName)[0].Split(" ").ToList());
                     StartProgram();
-                    stackAndQueueProgramWindow.SaveToBdButton.IsEnabled = true;
+               
                 }catch (Exception e)
                 {
                     MessageBox.Show("К сожалению, файл который вы пытаетесть загрузить, либо не содержит \nпрограмму, либо программа, записанная в него, содержит ошибки.");
@@ -140,7 +126,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             if (!(stackProgram is null))
             {
                 steps = MyStack<Tuple<int, string>>.ShowStackChanges(stackProgram.Split(" ").ToList());
-                stackAndQueueProgramWindow.SaveToFileButton.IsEnabled = true;
+               
                 StartProgram();
             }
         }
@@ -151,13 +137,10 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
 
             StartProgram();
 
-            stackAndQueueProgramWindow.SaveToBdButton.IsEnabled = true;
-            stackAndQueueProgramWindow.SaveToFileButton.IsEnabled = true;
         }
         private void SaveToDB()
         {   
-            Repository<OperationForDataStruct> repository = new Repository<OperationForDataStruct>(new ApplicationContext());
-
+            
             StringBuilder programStringBuilder = new StringBuilder();
             foreach (Tuple<int, string> tuple in steps)
             {
@@ -170,11 +153,8 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             }
             programStringBuilder.Remove(programStringBuilder.Length-1,1);
 
-            OperationForDataStruct program = new OperationForDataStruct();
-            program.Data = programStringBuilder.ToString();
-            repository.CreateAsync(program);
+           
 
-            stackAndQueueProgramWindow.SaveToBdButton.IsEnabled = false;
         }
 
         private void SaveToFile()
@@ -398,9 +378,6 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             OutputStepsToUniformGrid(steps);
             FirstStep();
 
-            stackAndQueueProgramWindow.ReadFromBdButton.IsEnabled = false;
-            stackAndQueueProgramWindow.ReadFromFileButton.IsEnabled = false;
-            stackAndQueueProgramWindow.GenerateNewProgramButton.IsEnabled = false;
 
             stackAndQueueProgramWindow.ButtonStepForward.IsEnabled = true;
             stackAndQueueProgramWindow.ButtonStopProgramm.IsEnabled = true;
@@ -449,15 +426,9 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             stepIndex = 0;
             steps = new List<Tuple<int, string>>();
 
-            stackAndQueueProgramWindow.ReadFromBdButton.IsEnabled = true;
-            stackAndQueueProgramWindow.ReadFromFileButton.IsEnabled = true;
-            stackAndQueueProgramWindow.GenerateNewProgramButton.IsEnabled = true;
-
             stackAndQueueProgramWindow.ButtonStepForward.IsEnabled = false;
             stackAndQueueProgramWindow.ButtonStopProgramm.IsEnabled = false;
-            
-            stackAndQueueProgramWindow.SaveToBdButton.IsEnabled = false;
-            stackAndQueueProgramWindow.SaveToFileButton.IsEnabled = false;
+
         }
 
         

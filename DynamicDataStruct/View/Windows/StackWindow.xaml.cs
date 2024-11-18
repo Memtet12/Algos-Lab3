@@ -37,5 +37,10 @@ namespace View
         {
             INavigationService.SetTimeTestingWindow(this);
         }
+
+        private void PushButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

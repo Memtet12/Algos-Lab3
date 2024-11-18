@@ -1,5 +1,4 @@
-﻿using Database.Access;
-using Database;
+﻿
 using DynamicDataStruct.View;
 using System;
 using System.Collections;
@@ -8,7 +7,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using static Database.DatabaseCore;
+
 
 namespace DynamicDataStruct.ViewModel.ViewModels.DialogWindowViewModels
 {
@@ -16,25 +15,17 @@ namespace DynamicDataStruct.ViewModel.ViewModels.DialogWindowViewModels
     {
         //public ICommand Datavisualization { get; }
         private int id;
-        private List<OperationForDataStruct> programsForStack;
+        
         private StackProgramSelectionDialogWindow stackProgramSelectionDialogWindow;
         public StackProgramSelectionDialogWindowViewModel(StackProgramSelectionDialogWindow window)
         {
             stackProgramSelectionDialogWindow = window;
             id = 0;
 
-            Repository<OperationForDataStruct> repository = new Repository<OperationForDataStruct>(new ApplicationContext());
-            programsForStack = (List<OperationForDataStruct>)repository.Get();
-
-            ReadDataFromDB();
+            
+          
         }
-        private void ReadDataFromDB()
-        {
-            foreach (OperationForDataStruct program in programsForStack)
-            {
-                DataVisualization(program.Data);
-            }
-        }
+        
         private void DataVisualization(string stackProgram)
         {
             Border firstColumnElement = GetBorder();
@@ -62,7 +53,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.DialogWindowViewModels
         {
             Button senderButton = (Button)sender;
             int stackProgramIndex = stackProgramSelectionDialogWindow.SelectionColumn.Children.IndexOf(senderButton);
-            stackProgramSelectionDialogWindow.Result = programsForStack[stackProgramIndex].Data;
+           
             stackProgramSelectionDialogWindow.Close();
         }
         private static ScrollViewer GetScrollViewerWithTextBlock(TextBlock stackProgram)

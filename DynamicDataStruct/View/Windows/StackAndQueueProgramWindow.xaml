@@ -74,12 +74,12 @@
             </ScrollViewer>
         </Border>
 
-        <Button x:Name="ReadFromBdButton" Grid.Column="1" Grid.Row="16" Content="Считать из БД" FontSize="17" Command="{Binding ReadFromBdCommand}" />
-        <Button x:Name="ReadFromFileButton" Grid.Column="3" Grid.Row="16" Grid.ColumnSpan="3"  Content="Считать из файловой системы" FontSize="17" Command="{Binding ReadFromFileSystemCommand}"/>
+       
+       
         
-        <Button x:Name="GenerateNewProgramButton" Grid.Column="1" Grid.Row="18" Grid.ColumnSpan="5" Content="Сгенерировать рандомную программу" FontSize="17" Command="{Binding GenerateAlgorithmCommand}" />
+       
         
-        <Button x:Name="SaveToBdButton" Grid.Column="1" Grid.Row="20" Content="Сохранить в БД" FontSize="17" IsEnabled="False" Command="{Binding SaveToBdCommand}" />
-        <Button x:Name="SaveToFileButton" Grid.Column="3" Grid.Row="20" Grid.ColumnSpan="3"  Content="Сохранить в файловую систему" IsEnabled="False" FontSize="17" Command="{Binding SaveToFileSystemCommand}"/>
+      
+       
     </Grid>
 </Window>
