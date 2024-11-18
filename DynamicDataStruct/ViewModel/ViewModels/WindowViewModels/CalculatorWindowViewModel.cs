@@ -53,7 +53,6 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
         public void SignAndNumberButtonClick(string signOrNumber)
         {
             calculatorWindow.ButtonEqually.IsEnabled = true;
-            calculatorWindow.ButtonBackSpace.IsEnabled = true;
             calculatorWindow.ButtonDeleteAll.IsEnabled = true;
 
             if (ChoiceInfixOrPostfix == "Postfix") 
@@ -113,7 +112,6 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
 
 
             calculatorWindow.ButtonEqually.IsEnabled = false;
-            calculatorWindow.ButtonBackSpace.IsEnabled = false;
             calculatorWindow.ButtonDeleteAll.IsEnabled = false;
         }
 
@@ -213,10 +211,8 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
 
             calculatorWindow.ButtonLeftBracket.IsEnabled = true;
             calculatorWindow.ButtonRightBracket.IsEnabled = true;
-            calculatorWindow.ButtonSpace.IsEnabled = false;
-            calculatorWindow.ButtonBackSpace.IsEnabled = false;
-            calculatorWindow.ButtonDeleteAll.IsEnabled = false;
-            calculatorWindow.ButtonEqually.IsEnabled = false;
+            calculatorWindow.ButtonDeleteAll.IsEnabled = true;
+            calculatorWindow.ButtonEqually.IsEnabled = true;
 
             calculatorWindow.ButtonChooseInfixEntry.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
             calculatorWindow.ButtonChoosePostfixEntry.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
@@ -232,17 +228,15 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             {
                 calculatorWindow.ButtonDeleteAll.IsEnabled = true;
                 calculatorWindow.ButtonEqually.IsEnabled = true;
-                calculatorWindow.ButtonBackSpace.IsEnabled = true;
             }
             else
             {
-                calculatorWindow.ButtonDeleteAll.IsEnabled = false;
-                calculatorWindow.ButtonEqually.IsEnabled = false;
-                calculatorWindow.ButtonBackSpace.IsEnabled = false;
+                calculatorWindow.ButtonDeleteAll.IsEnabled = true;
+                calculatorWindow.ButtonEqually.IsEnabled = true;
             }
             calculatorWindow.ButtonLeftBracket.IsEnabled = false;
             calculatorWindow.ButtonRightBracket.IsEnabled = false;
-            calculatorWindow.ButtonSpace.IsEnabled = true;
+
             
             calculatorWindow.ButtonChoosePostfixEntry.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
             calculatorWindow.ButtonChooseInfixEntry.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));

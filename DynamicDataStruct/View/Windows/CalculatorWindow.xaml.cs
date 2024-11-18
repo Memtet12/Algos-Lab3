@@ -57,5 +57,15 @@ namespace DynamicDataStruct.View
         {
             INavigationService.SetTimeTestingWindow(this);
         }
+
+        private void ButtonEqually_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonDeleteAll_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

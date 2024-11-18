@@ -60,48 +60,33 @@
             <Button x:Name="ButtonChoosePostfixEntry" Content="Польск." Grid.Row="4" Grid.Column="1" FontSize="17" Command="{Binding ChoosePostfixCommand}"/>
             <TextBlock x:Name="TextResult" Text=" Ответ:" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" FontSize="18"/>
 
-            <Button x:Name="ButtonOne" Content="1" Grid.Row="14" Grid.Column="1" FontSize="24"   Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonTwo" Content="2" Grid.Row="14" Grid.Column="3" FontSize="24"   Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonThree" Content="3" Grid.Row="14" Grid.Column="5" FontSize="24" Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonFour" Content="4" Grid.Row="12" Grid.Column="1" FontSize="24"  Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonFive" Content="5" Grid.Row="12" Grid.Column="3" FontSize="24"  Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonSix" Content="6" Grid.Row="12" Grid.Column="5" FontSize="24"   Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonSeven" Content="7" Grid.Row="10" Grid.Column="1" FontSize="24"  Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonEight" Content="8" Grid.Row="10" Grid.Column="3" FontSize="24"  Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonNine" Content="9" Grid.Row="10" Grid.Column="5" FontSize="24"   Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonZero" Content="0" Grid.Row="16" Grid.Column="3" FontSize="24"  Click="SignAndNumberButtonClick"/>
-
-            <Button x:Name="ButtonPlus" Content="+" Grid.Row="16" Grid.Column="7" FontSize="24"     Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonDivision" Content="/" Grid.Row="10" Grid.Column="7" FontSize="24"  Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonMultiplication" Content="*" Grid.Row="12" Grid.Column="7" FontSize="24" Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonMinus" Content="-" Grid.Row="14" Grid.Column="7" FontSize="24"     Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonPoint" Content="," Grid.Row="16" Grid.Column="5" FontSize="24"     Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonEqually" Content="=" Grid.Row="16" Grid.Column="1" FontSize="24" IsEnabled="False"  Command="{Binding EquallyCommand}"/>
-            <Button x:Name="ButtonPow" Content="^" Grid.Row="8" Grid.Column="7" FontSize="24"        Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonLogarithm" Content="ln" Grid.Row="10" Grid.Column="9" FontSize="24" Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonCos" Content="cos" Grid.Row="12" Grid.Column="9" FontSize="24"     Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonSin" Content="sin" Grid.Row="14" Grid.Column="9" FontSize="24"     Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonSqrt" Content="sqrt" Grid.Row="16" Grid.Column="9" FontSize="24"   Click="SignAndNumberButtonClick"/>
+            <Button x:Name="ButtonPlus" Content="+" Grid.Row="10" Grid.Column="6" FontSize="24"     Click="SignAndNumberButtonClick" Grid.ColumnSpan="3" Margin="6,0,7,0"/>
+            <Button x:Name="ButtonDivision" Content="/" Grid.Row="10" Grid.Column="1" FontSize="24"  Click="SignAndNumberButtonClick"/>
+            <Button x:Name="ButtonMultiplication" Content="*" Grid.Row="10" Grid.Column="2" FontSize="24" Click="SignAndNumberButtonClick" Grid.ColumnSpan="2" Margin="7,0,0,0"/>
+            <Button x:Name="ButtonMinus" Content="-" Grid.Row="10" Grid.Column="4" FontSize="24"     Click="SignAndNumberButtonClick" Grid.ColumnSpan="3" Margin="7,0,6,0"/>
+            <Button x:Name="ButtonEqually" Content="=" Grid.Row="11" Grid.Column="2" FontSize="24" IsEnabled="True"  Command="{Binding EquallyCommand}" Grid.ColumnSpan="4" Margin="6,7,1,7" Grid.RowSpan="3" Click="ButtonEqually_Click"/>
+            <Button x:Name="ButtonPow" Content="^" Grid.Row="10" Grid.Column="9" FontSize="24"        Click="SignAndNumberButtonClick"/>
+            <Button x:Name="ButtonLogarithm" Content="ln" Grid.Row="11" Grid.Column="1" FontSize="24" Click="SignAndNumberButtonClick" Margin="0,7,0,7" Grid.RowSpan="3"/>
+            <Button x:Name="ButtonCos" Content="cos" Grid.Row="7" Grid.Column="4" FontSize="24"     Click="SignAndNumberButtonClick" Grid.ColumnSpan="2" Margin="7,14,1,7" Grid.RowSpan="3"/>
+            <Button x:Name="ButtonSin" Content="sin" Grid.Row="7" Grid.Column="6" FontSize="24"     Click="SignAndNumberButtonClick" Grid.ColumnSpan="3" Margin="6,14,7,7" Grid.RowSpan="3"/>
+            <Button x:Name="ButtonSqrt" Content="sqrt" Grid.Row="7" Grid.Column="9" FontSize="24"   Click="SignAndNumberButtonClick" Margin="0,14,0,7" Grid.RowSpan="3"/>
 
             <Button x:Name="ButtonLeftBracket" Content="(" Grid.Row="8" Grid.Column="1" FontSize="24"  Click="SignAndNumberButtonClick"/>
             <Button x:Name="ButtonRightBracket" Content=")" Grid.Row="8" Grid.Column="3" FontSize="24" Click="SignAndNumberButtonClick"/>
-            <Button x:Name="ButtonSpace" Content="Space" Grid.Row="8" Grid.Column="9" FontSize="20" IsEnabled="False"  Click="SignAndNumberButtonClick"/>
-
-            <Button x:Name="ButtonBackSpace" Content="⌫" Grid.Row="2" Grid.Column="9" Grid.RowSpan="3" FontSize="19" IsEnabled="False" Command="{Binding DeleteCommand}"/>
-            <Button x:Name="ButtonDeleteAll" Content="C" Grid.Row="6" Grid.Column="9" FontSize="24" VerticalAlignment="Center" IsEnabled="False" Command="{Binding DeleteAllCommand}"/>
+            <Button x:Name="ButtonDeleteAll" Content="C" Grid.Row="6" Grid.Column="9" FontSize="24" VerticalAlignment="Center" IsEnabled="True" Command="{Binding DeleteAllCommand}" Click="ButtonDeleteAll_Click"/>
 
             <ScrollViewer Grid.Column="11" Grid.Row="2" Grid.RowSpan="13" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Background="White">
                 <UniformGrid x:Name="UniformGridForStack" HorizontalAlignment="Center" VerticalAlignment="Bottom" Columns="1"/>
             </ScrollViewer>
 
             <ScrollViewer Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="5" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility ="Hidden">
-                <TextBox x:Name="TextBoxInfixEntry" FontSize="24" ToolTip="Введи инфиксное выражение" TextAlignment="Right" IsReadOnly="True"/>
+                <TextBox x:Name="TextBoxInfixEntry" FontSize="24" ToolTip="Введи инфиксное выражение" TextAlignment="Right" IsReadOnly="False"/>
             </ScrollViewer>
 
             <ScrollViewer Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="5" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility ="Hidden">
-                <TextBox x:Name="TextBoxPostfixEntry"  FontSize="24" ToolTip="Введи постфиксное выражение" TextAlignment="Right" IsReadOnly="True"/>
+                <TextBox x:Name="TextBoxPostfixEntry"  FontSize="24" ToolTip="Введи постфиксное выражение" TextAlignment="Right" IsReadOnly="False"/>
             </ScrollViewer>
-            
+
             <Button x:Name="ButtonStepForward" Grid.Column="11" Grid.ColumnSpan="3" Grid.Row="16"  Content="Шаг вперед" FontSize="24" IsEnabled="False" Command="{Binding StepForwardCommand}" />
 
         </Grid>
