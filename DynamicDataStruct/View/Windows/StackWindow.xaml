@@ -1,0 +1,68 @@
+﻿<Window x:Class="View.StackWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Stack and Queue" MinHeight="440" Height="440" MaxHeight="440" MinWidth="600" Width="600" MaxWidth="600">
+    <Grid Background="#FFEFFCFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Menu VerticalAlignment="Center" Grid.Column="0"  Grid.ColumnSpan="11" Foreground="Black" Background="White">
+            <MenuItem Header="StackAndQueue" BorderBrush="WhiteSmoke" Background="#FFEFFCFF" Click="StackAndQueueMenuItem_Click" />
+            <MenuItem Header="Calculator" BorderBrush="WhiteSmoke" Click="CalculatorMenuItem_Click"/>
+            <MenuItem Header="StackAndQueueProgramms" BorderBrush="WhiteSmoke" Click="StackAndQueueProgrammsMenuItem_Click" />
+            <MenuItem Header="ArrayAlgorithms" BorderBrush="WhiteSmoke" Click="ArrayAlgorithmsMenuItem_Click"/>
+            <MenuItem Header="TimeTesting" BorderBrush="WhiteSmoke" Click="TimeTestingMenuItem_Click"/>
+        </Menu>
+
+        <Button x:Name="ButtonSetStackMode" Grid.Column="1" Grid.Row="2" Content="Режим Стека" FontSize="17" Background="#FFFFC7C7" Command="{Binding SetStackModeCommand}"/>
+        <Button x:Name="ButtonSetQueueMode" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Content="Режим Очереди" FontSize="17" Command="{Binding SetQueueModeCommand}" />
+        
+        <ScrollViewer Grid.Column="1" Grid.Row="4" Grid.RowSpan="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Background="White">
+            <UniformGrid x:Name="UniformGridForVisualElements" HorizontalAlignment="Center" VerticalAlignment="Bottom" Columns="1"/>
+        </ScrollViewer>
+
+        <Button x:Name="PushButton" Grid.Column="3" Grid.Row="4" Content="Push" FontSize="18" Command="{Binding PushCommand}"  />
+        <TextBox Grid.Column="4" Grid.Row="4" Text="{Binding Value}" ToolTip="Введите сюда значение, которое вы хотите добавить в Stack"/>
+
+        <Button x:Name="PopButton" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Content="Pop" FontSize="18" IsEnabled="False" Command="{Binding PopCommand}" />
+        <Button x:Name="TopButton" Grid.Column="3" Grid.Row="8" Grid.ColumnSpan="2" Content="Top" FontSize="18" IsEnabled="False" Command="{Binding TopCommand}"/>
+        <Button Grid.Column="3" Grid.Row="10" Grid.ColumnSpan="2" Content="isEmpty" FontSize="18" Command="{Binding IsEmptyCommand}"/>
+        <Button x:Name="PrintButton"  Grid.Column="3" Grid.Row="12" Grid.ColumnSpan="2" Content="Print" FontSize="18" IsEnabled="False" Command="{Binding PrintCommand}" />
+
+        <Border Grid.Column="1" Grid.Row="14" Background="LightGray" BorderBrush="Black" BorderThickness="0.8">
+            <TextBlock Text="Результат выполнения операции:"  FontSize="17" Padding="1,6,1,1" TextAlignment="Center"/>
+        </Border>
+        <Border Grid.Column="3" Grid.Row="14" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="0.8">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <TextBlock x:Name="ResultTextBlock" Background="White" FontSize="14"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

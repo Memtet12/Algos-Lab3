@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33712.159
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicDataStruct", "DynamicDataStruct\DynamicDataStruct.csproj", "{0632743A-3FFA-499D-B200-3790C08DFDFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0632743A-3FFA-499D-B200-3790C08DFDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0632743A-3FFA-499D-B200-3790C08DFDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0632743A-3FFA-499D-B200-3790C08DFDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0632743A-3FFA-499D-B200-3790C08DFDFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86F781F3-6328-4C19-8D0C-5BAB2CBB937E}
+	EndGlobalSection
+EndGlobal
