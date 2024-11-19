@@ -23,6 +23,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
         public ICommand TopCommand { get; }
         public ICommand IsEmptyCommand { get; }
         public ICommand PrintCommand { get; }
+        public ICommand SwitchModeCommand {  get; }
         public string Value
         {
             get => valueForPush;
@@ -36,6 +37,8 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
         private MyICollection<string> collection;
         private bool collectionTypeIsStack;
         private StackWindow stackWindow;
+        private bool IsInQueueMode;
+
         public StackWindowViewModel(StackWindow window)
         {
             stackWindow = window;
@@ -49,6 +52,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             TopCommand = new RelayCommand(Top);
             IsEmptyCommand = new RelayCommand(IsEmpty);
             PrintCommand = new RelayCommand(Print);
+            SwitchModeCommand = new RelayCommand(SwitchMode);
 
            
         }
@@ -66,9 +70,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             stackWindow.PopButton.IsEnabled = false;
             stackWindow.PrintButton.IsEnabled = false;
             stackWindow.TopButton.IsEnabled = false;
-
-            stackWindow.ButtonSetStackMode.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
-            stackWindow.ButtonSetQueueMode.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            IsInQueueMode = false;
         }
 
         private void SetQueueMode()
@@ -85,10 +87,18 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             stackWindow.PopButton.IsEnabled = false;
             stackWindow.PrintButton.IsEnabled = false;
             stackWindow.TopButton.IsEnabled = false;
+            IsInQueueMode = true;
 
-            stackWindow.ButtonSetQueueMode.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
-            stackWindow.ButtonSetStackMode.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
         }
+
+        private void SwitchMode()
+        {
+            if (!IsInQueueMode)
+                SetQueueMode();
+            else
+                SetStackMode();
+        }
+
         private void Push()
         {
             if (valueForPush != "")
@@ -184,6 +194,8 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
         {
             throw new NotImplementedException();
         }
+
+        
 
     }
 }
