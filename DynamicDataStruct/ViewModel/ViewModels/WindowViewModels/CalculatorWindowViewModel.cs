@@ -209,13 +209,11 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             calculatorWindow.TextBoxPostfixEntry.Text = "";
             calculatorWindow.TextBoxResult.Text = "";
 
-            calculatorWindow.ButtonLeftBracket.IsEnabled = true;
-            calculatorWindow.ButtonRightBracket.IsEnabled = true;
             calculatorWindow.ButtonDeleteAll.IsEnabled = true;
             calculatorWindow.ButtonEqually.IsEnabled = true;
 
             calculatorWindow.ButtonChooseInfixEntry.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
-            calculatorWindow.ButtonChoosePostfixEntry.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            calculatorWindow.ButtonChoosePostfixEntry.Background = new SolidColorBrush(Color.FromRgb(103, 58, 183));
         }
 
         private void ChoosePostfix()
@@ -234,12 +232,10 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
                 calculatorWindow.ButtonDeleteAll.IsEnabled = true;
                 calculatorWindow.ButtonEqually.IsEnabled = true;
             }
-            calculatorWindow.ButtonLeftBracket.IsEnabled = false;
-            calculatorWindow.ButtonRightBracket.IsEnabled = false;
 
             
             calculatorWindow.ButtonChoosePostfixEntry.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
-            calculatorWindow.ButtonChooseInfixEntry.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            calculatorWindow.ButtonChooseInfixEntry.Background = new SolidColorBrush(Color.FromRgb(103, 58, 183));
         }
 
  
