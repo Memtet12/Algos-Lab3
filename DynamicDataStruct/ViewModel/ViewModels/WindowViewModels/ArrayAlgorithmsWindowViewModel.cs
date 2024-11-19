@@ -17,6 +17,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
     internal class ArrayAlgorithmsWindowViewModel : INotifyPropertyChanged
     {
 
+        private ComboBox selectionBox;
         private Button lastButton;
         private List<Page> pages;
         private ArrayAlgorithmsWindow arrayAlgorithmsWindow;
@@ -42,33 +43,35 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
                 int n2 = int.Parse(num2);
                 return n1.CompareTo(n2);
             });
-
-            FillStackPanel();
+            selectionBox = window.SelectionBox;
+    
+            FillSelectionBox();
+            selectionBox.SelectionChanged += SelectionBox_SelectionChanged;
         }
-        private void FillStackPanel()
+
+        private void SelectionBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            arrayAlgorithmsWindow.Frame.Navigate(pages[selectionBox.SelectedIndex]);
+        }
+
+        private void FillSelectionBox()
         {
             for (int i = 1; i< pages.Count+1; i++)
             {
-                Button button = new Button();
-                button.Content = "Задача "+ i.ToString();
-                button.FontSize = 15;
-                button.Margin = new Thickness(0, 0, 1, 2);
-                button.Click += ShowPage;
-                arrayAlgorithmsWindow.StackPanelForAlgorithms.Children.Add(button);
+                selectionBox.Items.Add("Задача " + i.ToString());
+                //Button button = new Button();
+                //button.Content = "Задача "+ i.ToString();
+                //button.FontSize = 15;
+                //button.Margin = new Thickness(0, 0, 1, 2);
+                //button.Click += ShowPage;
+                //arrayAlgorithmsWindow.StackPanelForAlgorithms.Children.Add(button);
             }
-            lastButton = (Button)arrayAlgorithmsWindow.StackPanelForAlgorithms.Children[0];
+            //lastButton = (Button)arrayAlgorithmsWindow.StackPanelForAlgorithms.Children[0];
         }
 
         private void ShowPage(object sender, RoutedEventArgs e)
         {
-            lastButton.Background = new SolidColorBrush(Color.FromRgb(211, 211, 211));
-            
-            Button senderButton = (Button)sender;
-            senderButton.Background = new SolidColorBrush(Color.FromRgb(140, 200, 255));
-
-            arrayAlgorithmsWindow.Frame.Navigate(pages[arrayAlgorithmsWindow.StackPanelForAlgorithms.Children.IndexOf(senderButton)]);
-            
-            lastButton = senderButton;
+            arrayAlgorithmsWindow.Frame.Navigate(pages[selectionBox.SelectedIndex]);
         }
 
 

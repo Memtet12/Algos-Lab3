@@ -71,7 +71,7 @@ namespace Model
                 }
                 else if (_function.ContainsKey(expression[i]) && prevNum)
                 {
-                    throw new ArgumentException($"Не определена операция между числом и функцией: {expression[i]}");
+                    throw new ArgumentException($"Неверная запись");
                 }
                 else
                 {

@@ -8,7 +8,7 @@
       d:DesignHeight="394" d:DesignWidth="650"
       Title="FourthAlgorithmPage">
 
-    <Grid Background="#FFEFFCFF">
+    <Grid Background="#FFFBF4FF">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="30*"/>

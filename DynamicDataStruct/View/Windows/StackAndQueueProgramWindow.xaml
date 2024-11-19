@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DynamicDataStruct.View"
         mc:Ignorable="d"
-        Title="Stack and Queue programs" MinHeight="530" Height="530" MaxHeight="530" MinWidth="600" Width="600" MaxWidth="600">
-    <Grid Background="#FFEFFCFF">
+        Title="Stack and Queue programs" MinHeight="530" Height="530" MaxHeight="530" MinWidth="750" Width="750" MaxWidth="750">
+    <Grid Background="#FFFBF4FF">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="5*"/>
@@ -49,37 +49,54 @@
             <MenuItem Header="TimeTesting" BorderBrush="WhiteSmoke" Click="TimeTestingMenuItem_Click"/>
         </Menu>
 
-        <Button x:Name="ButtonSetStackMode" Grid.Column="1" Grid.Row="2" Content="Режим Стека" FontSize="17" Background="#FFFFC7C7" Command="{Binding SetStackModeCommand}"/>
-        <Button x:Name="ButtonSetQueueMode" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" Content="Режим Очереди" FontSize="17" Command="{Binding SetQueueModeCommand}"/>
+        <TextBlock  Grid.Column="1" Grid.Row="2" Text="Режим очереди:" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0, 0, 10, 0"></TextBlock>
+        <CheckBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Command="{Binding SwitchModeCommand}"></CheckBox>
 
-        <Button x:Name="ButtonStepForward" Grid.Column="5" Grid.Row="4" Grid.RowSpan="5" Content="↓" FontSize="70" IsEnabled="False" Command="{Binding StepForwardCommand}" />
-        <Button x:Name="ButtonStopProgramm" Grid.Column="5" Grid.Row="10" Grid.RowSpan="3" Content="Завершить" FontSize="17" IsEnabled="False" Command="{Binding EndProgrammCommand}" />
-
+        <TextBlock  Grid.Column="3" Grid.Row="2" Text="Алгоритм:" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0, 0, 10, 0"></TextBlock>
 
         <ScrollViewer Grid.Column="1" Grid.Row="4" Grid.RowSpan="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Background="White">
             <UniformGrid x:Name="UniformGridForCollectionElements" HorizontalAlignment="Center" VerticalAlignment="Bottom" Columns="1"/>
         </ScrollViewer>
-        
+
         <ScrollViewer Grid.Column="3" Grid.Row="4" Grid.RowSpan="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Background="White">
             <UniformGrid x:Name="UniformGridForSteps" HorizontalAlignment="Center" VerticalAlignment="Bottom" Columns="1"/>
         </ScrollViewer>
-        
-        <Border Grid.Column="1" Grid.Row="14" Background="LightGray" BorderBrush="Black" BorderThickness="0.8">
-            <TextBlock Text="Результат выполнения операции:"  FontSize="17" Padding="1,6,1,1" TextAlignment="Center"/>
+
+        <Border Grid.Column="1" Grid.Row="14">
+            <TextBlock Text="Результат выполнения операции:"  FontSize="20" Padding="1,6,1,1" TextAlignment="Center"/>
         </Border>
-        
+
         <Border Grid.Column="3" Grid.Row="14" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="0.8">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <TextBlock x:Name="ResultTextBlock" Background="White" Padding="1,0,0,0" FontSize="14"/>
             </ScrollViewer>
         </Border>
 
-       
-       
         
-       
         
-      
-       
+        <Button x:Name="ButtonStepForward" Grid.Column="1" Grid.Row="14" Grid.RowSpan="5" Content="Следующий шаг" FontSize="20" IsEnabled="False" Command="{Binding StepForwardCommand}" />
+        <Button x:Name="ButtonStopProgramm" Grid.Column="3" Grid.Row="15" Grid.RowSpan="3" Grid.ColumnSpan="3" Content="Завершить" FontSize="20" IsEnabled="False" Command="{Binding EndProgrammCommand}" />
+
+        <Button x:Name="GenerateNewProgramButton" Grid.Column="1" Grid.Row="18" Grid.ColumnSpan="5" Content="Сгенерировать рандомную программу" FontSize="17" Command="{Binding GenerateAlgorithmCommand}" />
+
+        <Button x:Name="ReadFromFileButton" Grid.Column="1" Grid.Row="20" Grid.ColumnSpan="1"  Content="Считать из файловой системы" FontSize="17" Command="{Binding ReadFromFileSystemCommand}"/>
+        <Button x:Name="SaveToFileButton" Grid.Column="3" Grid.Row="20" Grid.ColumnSpan="3"  Content="Сохранить в файловую систему" IsEnabled="False" FontSize="17" Command="{Binding SaveToFileSystemCommand}"/>
+
+        <TextBlock  Grid.Column="5" Grid.Row="2" Text="Команды:" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0, 0, 10, 0"></TextBlock>
+        
+        <Grid Grid.Column="5" Grid.Row="4" Grid.RowSpan="9" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="20*"></RowDefinition>
+                <RowDefinition Height ="20*"></RowDefinition>
+                <RowDefinition Height ="20*"></RowDefinition>
+                <RowDefinition Height ="20*"></RowDefinition>
+                <RowDefinition Height ="20*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="1 - вставка" FontSize="18" TextAlignment="Center"></TextBlock>
+            <TextBlock Grid.Row="1" Text="2 - удаление" FontSize="18" TextAlignment="Center"></TextBlock>
+            <TextBlock Grid.Row="2" Text="3 – начало очереди" FontSize="18" TextAlignment="Center"></TextBlock>
+            <TextBlock Grid.Row="3" Text="4 – проверка на пустоту" FontSize="16" TextAlignment="Center"></TextBlock>
+            <TextBlock Grid.Row="4" Text="5 - печать" FontSize="18" TextAlignment="Center"></TextBlock>
+        </Grid>
     </Grid>
 </Window>

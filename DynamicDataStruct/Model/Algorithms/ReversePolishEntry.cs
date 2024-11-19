@@ -80,7 +80,7 @@ namespace Model
             }
             catch(Exception ex) 
             {
-                throw new ArgumentException("Не корректный формат записи");
+                throw new ArgumentException("Неверная запись");
             }
             return stack;
         }

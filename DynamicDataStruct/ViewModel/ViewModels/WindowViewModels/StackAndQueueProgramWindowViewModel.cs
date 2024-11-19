@@ -34,12 +34,14 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
         public ICommand GenerateAlgorithmCommand { get; }
         public ICommand SaveToBdCommand { get; }
         public ICommand SaveToFileSystemCommand { get; }
+        public ICommand SwitchModeCommand {  get; }
 
         private int stepIndex;
         private List<Tuple<int, string>> steps;
         private MyICollection<string> collection;
         private bool collectionTypeIsStack = true;
         private StackAndQueueProgramWindow stackAndQueueProgramWindow;
+        private bool IsInQueueMode = false;
         public StackAndQueueProgramWindowViewModel(StackAndQueueProgramWindow window)
         {
             stackAndQueueProgramWindow = window;
@@ -57,6 +59,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
             SetQueueModeCommand = new RelayCommand(SetQueueMode);
             StepForwardCommand = new RelayCommand(StepForward);
             EndProgrammCommand = new RelayCommand(EndProgram);
+            SwitchModeCommand = new RelayCommand(SwitchMode);
         }
         private void SetStackMode()
         {
@@ -70,10 +73,8 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
 
             stackAndQueueProgramWindow.ButtonStepForward.IsEnabled = false;
             stackAndQueueProgramWindow.ButtonStopProgramm.IsEnabled = false;
-           
+            IsInQueueMode = false;
 
-            stackAndQueueProgramWindow.ButtonSetStackMode.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
-            stackAndQueueProgramWindow.ButtonSetQueueMode.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
         }
 
         private void SetQueueMode()
@@ -89,11 +90,18 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
 
             stackAndQueueProgramWindow.ButtonStepForward.IsEnabled = false;
             stackAndQueueProgramWindow.ButtonStopProgramm.IsEnabled = false;
-            
+            IsInQueueMode = true;
 
-            stackAndQueueProgramWindow.ButtonSetQueueMode.Background = new SolidColorBrush(Color.FromRgb(255, 199, 199));
-            stackAndQueueProgramWindow.ButtonSetStackMode.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
         }
+
+        private void SwitchMode()
+        {
+            if (!IsInQueueMode)
+                SetQueueMode();
+            else
+                SetStackMode();
+        }
+
         private void ReadFromFileSystem()
         {
             var fileDialog = new OpenFileDialog()
@@ -205,9 +213,12 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
 
                 Button step = new Button();
                 step.Content = line;
-                step.Height = 20;
+                step.FontSize = 13;
+                step.VerticalAlignment = VerticalAlignment.Center;
+                step.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                step.Height = 25;
                 step.Width = stackAndQueueProgramWindow.Width / 206 * 49 - 21;
-                step.Background = new SolidColorBrush(Color.FromRgb(211, 211, 211));
+                step.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 step.Click += StepClick;
                 stackAndQueueProgramWindow.UniformGridForSteps.Children.Add(step);
             }
@@ -216,7 +227,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
         private void StepClick(object sender, RoutedEventArgs e)
         {
             Button b = (Button)e.Source;
-            ChooseStep(b);
+            //ChooseStep(b);
         }
 
         public void ChooseStep(Button step)
@@ -227,7 +238,7 @@ namespace DynamicDataStruct.ViewModel.ViewModels.WindowViewModels
 
             if (stepIndex < newStepIndex)
             {
-                lastStep.Background = new SolidColorBrush(Color.FromRgb(211, 211, 211));
+                lastStep.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 for (int i = stepIndex; i < newStepIndex-1; i++)
                 {
                     HiddenStepForward();
