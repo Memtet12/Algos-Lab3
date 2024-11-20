@@ -25,7 +25,7 @@ namespace DynamicDataStruct.View.Windows
         public TimeTestingWindow()
         {
             InitializeComponent();
-            windowViewModel = new TimeTestingWindowViewModel();
+            windowViewModel = new TimeTestingWindowViewModel(this);
             DataContext = windowViewModel;
         }
         private void StackAndQueueMenuItem_Click(object sender, RoutedEventArgs e)

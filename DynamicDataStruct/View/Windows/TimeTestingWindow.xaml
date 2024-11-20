@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DynamicDataStruct.View.Windows"
         mc:Ignorable="d"
-        Title="Time testing" MinHeight="500" Height="500" MaxHeight="500" MinWidth="600" Width="600" MaxWidth="600">
-    <Grid Background="#FFEFFCFF">
+        xmlns:ScottPlot="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
+        Title="Time testing" MinHeight="500" Height="500" MaxHeight="500" MinWidth="730" Width="730" MaxWidth="730">
+    <Grid Background="#FFFBF4FF">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="10*"/>
@@ -44,46 +45,26 @@
             <MenuItem Header="TimeTesting" BorderBrush="WhiteSmoke" Background="#FFEFFCFF" Click="TimeTestingMenuItem_Click"/>
         </Menu>
 
-        <Button x:Name="GenerateNewProgramButton" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="9" FontSize="17" Command="{Binding StartProgrammCommand}">
-            <TextBlock TextAlignment="Center"> Провести замеры времени на рандомных программах, <LineBreak/> с количеством команд:</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Text="Использовать очередь" VerticalAlignment="Center"></TextBlock>
+        <CheckBox x:Name="ShouldUseQueue" Grid.Row="2" Grid.Column="9" Margin="10"></CheckBox>
+        
+        <Button x:Name="GenerateNewProgramButton" Grid.Column="8" Grid.Row="9" Grid.ColumnSpan="9" FontSize="17" Command="{Binding StartProgrammCommand}">
+            <TextBlock TextAlignment="Center"> Запуск <LineBreak/> с количеством команд:</TextBlock>
         </Button>
-        <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Text="Начинающемся с:" FontSize="17"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Start}" FontSize="17" Grid.ColumnSpan="2" IsEnabled="{Binding IsStartTextBoxEnabled}" ToolTip="Примечание: Сюда вы можете вводить только натуральные числа"/>
-        
-        <TextBlock Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="3" Text="Заканчивающемся на:" FontSize="17"/>
-        <TextBox Grid.Column="4" Grid.Row="4" Text="{Binding Finish}" FontSize="17" Grid.ColumnSpan="3" IsEnabled="{Binding IsFinishTextBoxEnabled}" ToolTip="Примечание: Сюда вы можете вводить только натуральные числа"/>
-        
-        <TextBlock Grid.Column="8" Grid.Row="3" Grid.ColumnSpan="2" Text="Шагом в:" FontSize="17"/>
-        <TextBox Grid.Column="8" Grid.Row="4" Text="{Binding Step}" FontSize="17" Grid.ColumnSpan="2" IsEnabled="{Binding IsStepTextBoxEnabled}" ToolTip="Примечание: Сюда вы можете вводить только натуральные числа"/>
 
-        <Button x:Name="ORButton" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="3" Content="ИЛИ" FontSize="17" VerticalAlignment="Center" Height="40" Command="{Binding ORCommand}"/>
-
-        <TextBlock Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Text="Равным:" FontSize="17"/>
-        <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding FinalStepsCount}" FontSize="17" Grid.ColumnSpan="4" IsEnabled="{Binding IsFinalStepsCountTextBoxEnabled}" ToolTip="Примечание: Сюда вы можете вводить только натуральные числа"/>
+        <ScottPlot:WpfPlot x:Name="GraphPlot" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="6" Grid.RowSpan="8"></ScottPlot:WpfPlot>
         
-        <TextBlock Grid.Column="6" Grid.Row="6" Grid.ColumnSpan="4" Text="И количестве итераций равным:" FontSize="17"/>
-        <TextBox Grid.Column="6" Grid.Row="7" Text="{Binding IterationsCount}" FontSize="17" Grid.ColumnSpan="4" IsEnabled="{Binding IsIterationsCountTextBoxEnabled}" ToolTip="Примечание: Сюда вы можете вводить только натуральные числа"/>
+        <TextBlock Grid.Column="8" Grid.Row="5" Grid.ColumnSpan="3" Text="Длина алгоритма" FontSize="17"/>
+        <TextBox Grid.Column="8" Grid.Row="6" Text="{Binding Finish}" FontSize="17" Grid.ColumnSpan="3" IsEnabled="{Binding IsFinishTextBoxEnabled}" ToolTip="Примечание: Сюда вы можете вводить только натуральные числа"/>
         
-        <TextBlock Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="4" FontSize="17">
-        Время выполнения программы на
-        <LineBreak/>
-        нашем стеке и на стеке из C#:
-        </TextBlock>
-        <TextBlock Grid.Column="6" Grid.Row="8" Grid.ColumnSpan="4" FontSize="17">
-        Время выполнения программы на
-        <LineBreak/>
-        нашей очереди и очереди из C#:
-        </TextBlock>
+        <TextBlock Grid.Column="8" x:Name="StesText" Grid.Row="7" Grid.ColumnSpan="2" Text="Шагов:" FontSize="17"/>
+        <TextBox Grid.Column="8" Name="StepsTextBox" Grid.Row="8" Text="{Binding Step}" FontSize="17" Grid.ColumnSpan="2" IsEnabled="{Binding IsStepTextBoxEnabled}" ToolTip="Примечание: Сюда вы можете вводить только натуральные числа"/>
 
-        <Border Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="4" Grid.RowSpan="3" BorderBrush="Black" BorderThickness="0.8">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <TextBlock x:Name="ResultTextBlockForStack" Background="White" Text="{Binding ResultLineForStack}" Padding="1,0,0,0" FontSize="14"/>
-            </ScrollViewer>
-        </Border>
-        <Border Grid.Column="6" Grid.Row="9" Grid.ColumnSpan="4" Grid.RowSpan="3" BorderBrush="Black" BorderThickness="0.8">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <TextBlock x:Name="ResultTextBlockForQueue" Background="White" Text="{Binding ResultLineForQueue}" Padding="1,0,0,0" FontSize="14"/>
-            </ScrollViewer>
-        </Border>
+        <Button x:Name="ORButton" Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="3" Content="Сменить режим" FontSize="17" VerticalAlignment="Center" Height="40" Command="{Binding ORCommand}"/>
+
+       
+        <TextBox Grid.Column="8" x:Name="IterationTextBox" Visibility="Hidden" Grid.Row="8" Text="{Binding FinalStepsCount}" FontSize="17" Grid.ColumnSpan="4" IsEnabled="{Binding IsFinalStepsCountTextBoxEnabled}" ToolTip="Примечание: Сюда вы можете вводить только натуральные числа"/>
+
+        <TextBlock x:Name="IterationText" Visibility="Hidden" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="4" Text="Количестве итераций:" FontSize="17"/>
     </Grid>
 </Window>
